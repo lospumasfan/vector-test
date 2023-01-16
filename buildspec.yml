@@ -1,0 +1,35 @@
+version: 0.2
+# Used this as my guide https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+  pre_build:
+    commands:
+      - apt-get install -y python3
+      - pip install --upgrade pip
+      - pip install .
+      - pip install -r ./requirements.txt
+      - TMDB_API_KEY=$tmdbAPIkey python3 ./src/api.py 8080
+      - mkdir test-reports
+  build:
+    commands:
+      - pytest
+        --html=test-reports/report.html
+        -v
+        --junitxml=test-reports/junit.xml
+        --log-file=test-reports/logs.txt
+        tests
+  post_build:
+    commands:
+      - echo Build completed
+
+reports:
+  report:
+    files:
+      - 'junit.xml'
+      - 'report.html'
+      - 'assets/*'
+    base-directory: 'test-reports'
+    file-format: JunitXml

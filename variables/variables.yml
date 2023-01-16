@@ -1,0 +1,2 @@
+variables:
+  tmdbAPIkey: '58c8ce4f93a648eb8e1d955e343c96b008bc931c34de8155427dbd25' # hashed the api key. still learning how to do this.
