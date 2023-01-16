@@ -10,11 +10,11 @@ phases:
       - apt-get install -y python3
       - pip install --upgrade pip
       - pip install .
-      - pip install -r ./requirements.txt
-      - TMDB_API_KEY=$tmdbAPIkey python3 ./src/api.py 8080
       - mkdir test-reports
   build:
     commands:
+      - pip install -r ./requirements.txt
+      - TMDB_API_KEY=$tmdbAPIkey python3 ./src/api.py 8080
       - pytest
         --html=test-reports/report.html
         -v
