@@ -8,14 +8,14 @@ phases:
   pre_build:
     commands:
       - echo Pre build
-      - pip3 install python3
+      - apt-get install -y python3
       - pip3 install --upgrade pip
       - pip3 install docker
       - mkdir test-reports
   build:
     commands:
       - docker build -t vector-test .
-      - echo Build me
+      - echo Docker Build me
   post_build:
     commands:
       - echo Post Build completed
