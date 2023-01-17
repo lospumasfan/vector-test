@@ -22,9 +22,9 @@ phases:
     commands:
       - echo Post Build completed
 
-reports:
-  report:
-    files:
-      - 'junit.xml'
-    base-directory: 'test-reports'
-    file-format: JunitXml
+# reports:
+#   report:
+#     files:
+#       - 'junit.xml'
+#     base-directory: 'test-reports'
+#     file-format: JunitXml
