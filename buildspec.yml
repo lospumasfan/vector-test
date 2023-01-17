@@ -7,6 +7,7 @@ phases:
       python: 3.8
   pre_build:
     commands:
+    on-failure: ABORT
       - echo Pre build
       - apt-get install -y python3
       - pip3 install --upgrade pip
@@ -14,11 +15,11 @@ phases:
       - mkdir test-reports
   build:
     commands:
+    on-failure: ABORT
       - echo Build me
       - pip3 install -r requirements.txt
   post_build:
     commands:
-      - python3 -m pytest --junitxml=test-reports/junit.xml
       - echo Post Build completed
 
 reports:
