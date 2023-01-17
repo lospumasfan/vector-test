@@ -7,15 +7,14 @@ phases:
       python: 3.8
   pre_build:
     commands:
-    on-failure: ABORT
       - echo Pre build
       - apt-get install -y python3
       - pip3 install --upgrade pip
       - pip3 install pytest
+      - pip3 install api.py
       - mkdir test-reports
   build:
     commands:
-    on-failure: ABORT
       - echo Build me
       - pip3 install -r requirements.txt
   post_build:
