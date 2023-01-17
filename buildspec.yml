@@ -18,7 +18,6 @@ phases:
       - pip3 install -r requirements.txt
   post_build:
     commands:
-      - python3 ./src/api.py 8080
       - python3 -m pytest --junitxml=test-reports/junit.xml
       - echo Post Build completed
 
