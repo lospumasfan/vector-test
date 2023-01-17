@@ -24,7 +24,8 @@ RUN apt-get install -qy python3
 ADD /src/ /app/
 
 # locales to UTF-8
-RUN locale-gen C.UTF-8 && /usr/sbin/update-locale LANG=C.UTF-8
+RUN apt-get clean && apt-get install -y locales
+RUN locale-gen en_US.UTF-8
 
 # app environment
 ENV PYTHONIOENCODING UTF-8
