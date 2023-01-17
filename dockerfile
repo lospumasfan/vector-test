@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # set the base image
-FROM python:3.x
+FROM python:3.10
 
 # author
 LABEL name="Ling W"
