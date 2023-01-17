@@ -9,18 +9,12 @@ phases:
     commands:
       - apt-get install -y python3
       - pip install --upgrade pip
-      - pip install .
+      - pip install pytest
       - mkdir test-reports
+      - pip install -r ./usage.txt
   build:
     commands:
-      - pip install -r ./requirements.txt
-      - TMDB_API_KEY=$tmdbAPIkey python3 ./src/api.py 8080
-      - pytest
-        --html=test-reports/report.html
-        -v
-        --junitxml=test-reports/junit.xml
-        --log-file=test-reports/logs.txt
-        tests
+      - python -m pytest --junitxml=test-reports/junit.xml
   post_build:
     commands:
       - echo Build completed
@@ -29,7 +23,5 @@ reports:
   report:
     files:
       - 'junit.xml'
-      - 'report.html'
-      - 'assets/*'
     base-directory: 'test-reports'
     file-format: JunitXml
