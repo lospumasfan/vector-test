@@ -11,7 +11,7 @@ phases:
       - pip install --upgrade pip
       - pip install pytest
       - mkdir test-reports
-      - pip install -r ./usage.txt
+      - pip install -r usage.txt
   build:
     commands:
       - python -m pytest --junitxml=test-reports/junit.xml
