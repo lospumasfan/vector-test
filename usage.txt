@@ -1,6 +1,8 @@
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
-TMDB_API_KEY=489523b759d7257e987c0109c821b4e0 python3 ./src/api.py 8080
+TMDB_API_KEY=489523b759d7257e987c0109c821b4e0 
+
+python3 src/api.py 8080
 
 # Open http://localhost:8080/ in your browser, or use curl
 #

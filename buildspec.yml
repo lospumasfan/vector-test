@@ -7,17 +7,20 @@ phases:
       python: 3.8
   pre_build:
     commands:
+      - echo Pre build
       - apt-get install -y python3
-      - pip install --upgrade pip
-      - pip install pytest
+      - pip3 install --upgrade pip
+      - pip3 install pytest
       - mkdir test-reports
-      - pip install -r usage.txt
   build:
     commands:
-      - python -m pytest --junitxml=test-reports/junit.xml
+      - echo Build me
+      - pip3 install -r requirements.txt
   post_build:
     commands:
-      - echo Build completed
+      - python3 ./src/api.py 8080
+      - python3 -m pytest --junitxml=test-reports/junit.xml
+      - echo Post Build completed
 
 reports:
   report:
