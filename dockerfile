@@ -22,11 +22,3 @@ RUN apt-get install -qy python3
 
 # add the application to the container
 ADD /src/ /app/
-
-# locales to UTF-8
-RUN apt-get clean && apt-get install -y locales
-RUN locale-gen en_US.UTF-8
-
-# app environment
-ENV PYTHONIOENCODING UTF-8
-ENV PYTHONPATH /app/
